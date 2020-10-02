@@ -556,7 +556,7 @@
 
 
         var numbersCheck3 = [200, 201, 202, 203, 204, 205, 206, 207];
-        var shuffled = _.shuffle(numbersCheck2);
+        var shuffled = _.shuffle(numbersCheck3);
         // This test will fail 1/9! times
         expect(shuffled).to.not.eql([200, 201, 202, 203, 204, 205, 206, 207]);
 
