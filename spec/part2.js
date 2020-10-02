@@ -524,7 +524,7 @@
       });
 
       it('should not be in the same order as the original object', function() {
-        var numbers = [4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21];
+        var numbers = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
         var shuffled = _.shuffle(numbers);
 
         // This test will fail 1/9! times
