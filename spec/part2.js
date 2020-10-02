@@ -440,7 +440,7 @@
         memoSpy(10);
         expect(spy).to.have.been.calledOnce;
       });
-      
+
       it('should not run the memoized function twice when given a reference type as an argument', function() {
         // Be careful how you are checking if a set of arguments has been passed in already
         var spy = sinon.spy(function() { return 'Dummy output'; });
@@ -500,13 +500,13 @@
       });
 
       it('should not modify the original object', function() {
-        var numbers = [4, 5, 6];
+        var numbers = [4, 5, 6, 7, 8, 9, 10];
         var shuffled = _.shuffle(numbers).sort();
 
         expect(shuffled).to.not.equal(numbers);
-        expect(numbers).to.eql([4, 5, 6]);
+        expect(numbers).to.eql([4, 5, 6, 7, 8, 9, 10]);
       });
-      
+
       it('should maintain same array length', function() {
         var numbers = [1, 1, 2, 3];
         var shuffled = _.shuffle(numbers);
@@ -515,18 +515,18 @@
       });
 
       it('should have the same elements as the original object', function() {
-        var numbers = [4, 5, 6];
+        var numbers = [4, 5, 6, 7, 8, 9, 10, 111, 12 ,13, 14, 15, 16];
         var shuffled = _.shuffle(numbers).sort();
 
-        expect(shuffled).to.eql([4, 5, 6]);
+        expect(shuffled).to.eql([4, 5, 6, 7, 8, 9, 10, 111, 12 ,13, 14, 15, 16]);
       });
 
       it('should not be in the same order as the original object', function() {
-        var numbers = [4, 5, 6, 7, 8, 9, 10];
+        var numbers = [4, 5, 6, 7, 8, 9, 10, 111, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21];
         var shuffled = _.shuffle(numbers);
 
         // This test will fail 1/9! times
-        expect(shuffled).to.not.eql([4, 5, 6, 7, 8, 9, 10]);
+        expect(shuffled).to.not.eql([4, 5, 6, 7, 8, 9, 10, 111, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21]);
       });
     });
 
