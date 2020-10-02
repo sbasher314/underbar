@@ -524,11 +524,23 @@
       });
 
       it('should not be in the same order as the original object', function() {
-        var numbers = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
-        var shuffled = _.shuffle(numbers);
-
+        var numbersCheck1 = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+        var shuffled = _.shuffle(numbersCheck1);
         // This test will fail 1/9! times
         expect(shuffled).to.not.eql([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+
+
+        var numbersCheck2 = [100, 101, 102, 103, 104, 105, 106, 107];
+        var shuffled = _.shuffle(numbersCheck2);
+        // This test will fail 1/9! times
+        expect(shuffled).to.not.eql([100, 101, 102, 103, 104, 105, 106, 107]);
+
+
+        var numbersCheck3 = [200, 201, 202, 203, 204, 205, 206, 207];
+        var shuffled = _.shuffle(numbersCheck2);
+        // This test will fail 1/9! times
+        expect(shuffled).to.not.eql([200, 201, 202, 203, 204, 205, 206, 207]);
+
       });
     });
 
