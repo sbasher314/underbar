@@ -515,18 +515,20 @@
       });
 
       it('should have the same elements as the original object', function() {
-        var numbers = [4, 5, 6, 7, 8, 9, 10, 111, 12 ,13, 14, 15, 16];
-        var shuffled = _.shuffle(numbers).sort();
+        var numbers = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+        var shuffled = _.shuffle(numbers).sort(function(a,b) {
+          return a - b;
+        });
 
-        expect(shuffled).to.eql([4, 5, 6, 7, 8, 9, 10, 111, 12 ,13, 14, 15, 16]);
+        expect(shuffled).to.eql([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
       });
 
       it('should not be in the same order as the original object', function() {
-        var numbers = [4, 5, 6, 7, 8, 9, 10, 111, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21];
+        var numbers = [4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21];
         var shuffled = _.shuffle(numbers);
 
         // This test will fail 1/9! times
-        expect(shuffled).to.not.eql([4, 5, 6, 7, 8, 9, 10, 111, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21]);
+        expect(shuffled).to.not.eql([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
       });
     });
 
