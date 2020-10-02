@@ -215,7 +215,12 @@
 
     describe('defaults', function() {
       checkForNativeMethods(function() {
+<<<<<<< HEAD
         _.defaults({ a: 1 }, { b: 1 }, { c: 1 });
+=======
+        _.defaults({ a: 1 },{ b: 1 }, { c: 1 });
+        expect(_.defaults.toString()).to.not.contain('Object.assign');
+>>>>>>> 4685ac0... Add text to check the function body for the strring 'Object.assign' in order to change universal function spies in checkForNativeMathod function
       });
 
       it('should be a function', function() {
