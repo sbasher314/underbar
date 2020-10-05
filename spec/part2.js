@@ -511,8 +511,8 @@
 
         _.delay(callback, 1000, randomArguments);
         clock.tick(1000);
-        expect(callback).to.have.been.calledWith(randomArguments);
 
+        expect(callback).to.have.been.calledWith(randomArguments);
       });
     });
 
