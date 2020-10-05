@@ -546,17 +546,15 @@
       });
 
       it('should not be in the same order as the original object', function() {
-        var numbers1 = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
-        var shuffled = _.shuffle(numbers1);
-        expect(shuffled).to.not.eql([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+        var numbers = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+        var shuffled1 = _.shuffle(numbers);
+        var shuffled2 = _.shuffle(numbers);
+        var shuffled3 = _.shuffle(numbers);
 
-        var numbers2 = [100, 101, 102, 103, 104, 105, 106, 107];
-        var shuffled = _.shuffle(numbers2);
-        expect(shuffled).to.not.eql([100, 101, 102, 103, 104, 105, 106, 107]);
-
-        var numbers3 = [200, 201, 202, 203, 204, 205, 206, 207];
-        var shuffled = _.shuffle(numbers3);
-        expect(shuffled).to.not.eql([200, 201, 202, 203, 204, 205, 206, 207]);
+        expect(shuffled1).to.not.eql([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+        expect(shuffled1).to.not.eql(shuffled2);
+        expect(shuffled1).to.not.eql(shuffled3);
+        expect(shuffled2).to.not.eql(shuffled3);
 
         // Even with functional code, these assertions will fail a small fraction of the time,
         // when shuffling the input array places all of the items back in their original positions.
