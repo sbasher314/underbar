@@ -504,10 +504,15 @@
       });
 
       it('should have successfully passed function arguments in', function() {
-        _.delay(callback, 1000, 1, 2);
-        clock.tick(1000);
+        var randomLength = Math.floor(Math.random() * 10);
+        var randomArguments = Array.from({length: randomLength}, function() {
+          return Math.floor(Math.random() * 10);
+        });
 
-        expect(callback).to.have.been.calledOnce;
+        _.delay(callback, 1000, randomArguments);
+        clock.tick(1000);
+        expect(callback).to.have.been.calledWith(randomArguments);
+
       });
     });
 
