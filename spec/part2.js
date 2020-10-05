@@ -215,6 +215,7 @@
 
     describe('defaults', function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       checkForNativeMethods(function() {
 <<<<<<< HEAD
         _.defaults({ a: 1 }, { b: 1 }, { c: 1 });
@@ -230,6 +231,11 @@
         });
 >>>>>>> eea37fc... Add basic string check for existance of Object.assign method in test for _.defaults
       });
+=======
+      checkForNativeMethods(function() {
+        _.defaults({ a: 1 },{ b: 1 }, { c: 1 });
+      }, true);
+>>>>>>> 0f0dd08... Add param to checkForNativeMethods and update testSupport.js to test for Object.assign in _.defaults
 
       it('should be a function', function() {
         expect(_.defaults).to.be.an.instanceOf(Function);
@@ -559,7 +565,7 @@
 
   });
 
-  function checkForNativeMethods(runUnderbarFunction) {
+  function checkForNativeMethods(runUnderbarFunction, shouldCheckForObjectAssign) {
     it('should not use the native version of any underbar methods in its implementation', function() {
       // These spies are set up in testSupport.js
       runUnderbarFunction();
@@ -570,6 +576,14 @@
       expect(Array.prototype.reduce.called).to.equal(false);
       expect(Array.prototype.every.called).to.equal(false);
       expect(Array.prototype.some.called).to.equal(false);
+      if (shouldCheckForObjectAssign) {
+        expect(Object.assign.called).to.equal(false);
+      }
     });
+<<<<<<< HEAD
   };
+=======
+  }
+
+>>>>>>> 0f0dd08... Add param to checkForNativeMethods and update testSupport.js to test for Object.assign in _.defaults
 }());
