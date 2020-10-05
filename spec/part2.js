@@ -513,13 +513,15 @@
         let randomArguments = Array.from({length: 10}, function() {
           return Math.floor(Math.random() * 10)
         });
-        console.log(randomArguments);
 
         _.delay(callback, 100, ...randomArguments);
         clock.tick(100);
         expect(callback).to.have.been.calledWith(...randomArguments);
+<<<<<<< HEAD
 >>>>>>> d92fd2b... Add random arguments to 'should have successfully passed function arguments in' test for _.delay
 
+=======
+>>>>>>> 284dd4e... Remove console.log from 'should have successfully passed function arguments in' test for _.delay
       });
     });
 
