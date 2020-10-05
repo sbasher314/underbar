@@ -537,8 +537,8 @@
       });
 
       it('should have the same elements as the original object', function() {
-        var numbers1 = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-        var shuffled = _.shuffle(numbers1).sort(function(a, b) {
+        var numbers = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+        var shuffled = _.shuffle(numbers).sort(function(a, b) {
           return a - b;
         });
 
