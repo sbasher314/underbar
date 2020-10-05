@@ -128,7 +128,21 @@
   };
 
 
-  /* NOTE: This is the end of part one: please move onto the scopes and closures section in module 2 of the online curriculum. Please finish reading the slides in that section before continuing below. */
+  // --------------------
+  // ! END OF PART ONE !
+  // --------------------
+  //
+  // Congrats! You've reached the end of Underbar Part 1!
+  //
+  // This means that you should return to Learn and move on to the next lesson:
+  //    - Learn Unit: Debugging
+  //    - Learn Lesson: Before Moving On
+  //
+  // CAUTION:
+  //
+  //   - Do not proceed on to Underbar Part 2 (below) without reading the slides on Scopes & Closure
+  //
+  // --------------------
 
 
   // Determine if the array or object contains a given value (using `===`).
