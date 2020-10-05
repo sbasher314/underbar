@@ -349,17 +349,12 @@
       it('uses the result of `iterator` for uniqueness comparisons (sorted case)', function() {
         var isOne = function(value) { return value === 1; };
         var numbers = [1, 2, 2, 3, 4, 4];
-<<<<<<< HEAD
-        
+
         var roundNumber = function(number) { return Math.round(number); };
         var otherNumbers = [11.2, 11.9, 12.4, 12.6];
-        
+
         expect(_.uniq(numbers, true, isOne)).to.eql([1, 2]);
         expect(_.uniq(otherNumbers, true, roundNumber)).to.eql([11.2, 11.9, 12.6]);
-=======
-
-        expect(_.uniq(numbers, true, iterator)).to.eql([1, 2]);
->>>>>>> 8e8d96e... Add check for Array.sort in checkForNativeMethods in spec/part1 and check in _.uniq to drive students away from sorting the array
       });
 
       it('should produce a brand new array instead of modifying the input array', function() {
@@ -414,7 +409,7 @@
 
         expect(doubledNumbers).to.eql([2, 4, 6]);
       });
-      
+
       it('should apply a function to every value in an object', function() {
         var addOneToEach = _.map({1: 1, 2: 2, 3: 3 }, function(item) { return item + 1; });
 
@@ -478,15 +473,9 @@
       });
 
       it('should not mutate the input array', function() {
-<<<<<<< HEAD
         var input = [1, 2, 3, 4, 5];
         var result = _.reduce(input, function(memo, item) { return item; });
-        
-=======
-        var input = [1,2,3,4,5];
-        var result = _.reduce(input, function(memo, item) {return item;});
 
->>>>>>> 8e8d96e... Add check for Array.sort in checkForNativeMethods in spec/part1 and check in _.uniq to drive students away from sorting the array
         /*
          * Mutation of inputs should be avoided without good justification otherwise
          * as it can often lead to hard to find bugs and confusing code!
@@ -588,7 +577,7 @@
     });
   });
 
-  function checkForNativeMethods(runUnderbarFunction, shouldCheckForArraySort) {
+  var checkForNativeMethods = function(runUnderbarFunction, shouldCheckForArraySort) {
     it('should not use the native version of any underbar methods in its implementation', function() {
       // These spies are set up in testSupport.js
       runUnderbarFunction();

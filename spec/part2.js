@@ -214,28 +214,10 @@
     });
 
     describe('defaults', function() {
-<<<<<<< HEAD
-<<<<<<< HEAD
       checkForNativeMethods(function() {
-<<<<<<< HEAD
         _.defaults({ a: 1 }, { b: 1 }, { c: 1 });
-=======
-        _.defaults({ a: 1 },{ b: 1 }, { c: 1 });
-        expect(_.defaults.toString()).to.not.contain('Object.assign');
->>>>>>> 4685ac0... Add text to check the function body for the strring 'Object.assign' in order to change universal function spies in checkForNativeMathod function
-=======
-      it('should not use native methods', function() {
-        checkForNativeMethods(function() {
-          _.defaults({ a: 1 },{ b: 1 }, { c: 1 });
-          expect(_.defaults.toString()).to.not.contain('Object.assign');
-        });
->>>>>>> eea37fc... Add basic string check for existance of Object.assign method in test for _.defaults
-      });
-=======
-      checkForNativeMethods(function() {
-        _.defaults({ a: 1 },{ b: 1 }, { c: 1 });
       }, true);
->>>>>>> 0f0dd08... Add param to checkForNativeMethods and update testSupport.js to test for Object.assign in _.defaults
+
 
       it('should be a function', function() {
         expect(_.defaults).to.be.an.instanceOf(Function);
@@ -506,22 +488,10 @@
       });
 
       it('should have successfully passed function arguments in', function() {
-<<<<<<< HEAD
         _.delay(callback, 1000, 1, 2);
         clock.tick(1000);
-=======
-        let randomArguments = Array.from({length: 10}, function() {
-          return Math.floor(Math.random() * 10)
-        });
 
-        _.delay(callback, 100, ...randomArguments);
-        clock.tick(100);
-        expect(callback).to.have.been.calledWith(...randomArguments);
-<<<<<<< HEAD
->>>>>>> d92fd2b... Add random arguments to 'should have successfully passed function arguments in' test for _.delay
-
-=======
->>>>>>> 284dd4e... Remove console.log from 'should have successfully passed function arguments in' test for _.delay
+        expect(callback).to.have.been.calledOnce;
       });
     });
 
@@ -547,7 +517,7 @@
 
       it('should have the same elements as the original object', function() {
         var numbers = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-        var shuffled = _.shuffle(numbers).sort(function(a,b) {
+        var shuffled = _.shuffle(numbers).sort(function(a, b) {
           return a - b;
         });
 
@@ -568,7 +538,7 @@
 
 
         var numbersCheck3 = [200, 201, 202, 203, 204, 205, 206, 207];
-        var shuffled = _.shuffle(numbersCheck3);
+        var numbersCheck2 = [100, 101, 102, 103, 104, 105, 106, 107];
         // This test will fail 1/9! times
         expect(shuffled).to.not.eql([200, 201, 202, 203, 204, 205, 206, 207]);
 
@@ -576,8 +546,7 @@
     });
 
   });
-
-  function checkForNativeMethods(runUnderbarFunction, shouldCheckForObjectAssign) {
+  var checkForNativeMethods = function(runUnderbarFunction, shouldCheckForObjectAssign) {
     it('should not use the native version of any underbar methods in its implementation', function() {
       // These spies are set up in testSupport.js
       runUnderbarFunction();
@@ -592,10 +561,6 @@
         expect(Object.assign.called).to.equal(false);
       }
     });
-<<<<<<< HEAD
   };
-=======
-  }
 
->>>>>>> 0f0dd08... Add param to checkForNativeMethods and update testSupport.js to test for Object.assign in _.defaults
 }());
