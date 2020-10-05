@@ -1,5 +1,21 @@
 (function() {
   'use strict';
+  var checkForNativeMethods = function checkForNativeMethods(runUnderbarFunction, shouldCheckForArraySort) {
+    it('should not use the native version of any underbar methods in its implementation', function() {
+      // These spies are set up in testSupport.js
+      runUnderbarFunction();
+      expect(Array.prototype.map.called).to.equal(false);
+      expect(Array.prototype.indexOf.called).to.equal(false);
+      expect(Array.prototype.forEach.called).to.equal(false);
+      expect(Array.prototype.filter.called).to.equal(false);
+      expect(Array.prototype.reduce.called).to.equal(false);
+      expect(Array.prototype.every.called).to.equal(false);
+      expect(Array.prototype.some.called).to.equal(false);
+      if (shouldCheckForArraySort) {
+        expect(Array.prototype.sort.called).to.equal(false);
+      }
+    });
+  };
 
   describe('Part I', function() {
 
@@ -576,21 +592,4 @@
 
     });
   });
-
-  var checkForNativeMethods = function(runUnderbarFunction, shouldCheckForArraySort) {
-    it('should not use the native version of any underbar methods in its implementation', function() {
-      // These spies are set up in testSupport.js
-      runUnderbarFunction();
-      expect(Array.prototype.map.called).to.equal(false);
-      expect(Array.prototype.indexOf.called).to.equal(false);
-      expect(Array.prototype.forEach.called).to.equal(false);
-      expect(Array.prototype.filter.called).to.equal(false);
-      expect(Array.prototype.reduce.called).to.equal(false);
-      expect(Array.prototype.every.called).to.equal(false);
-      expect(Array.prototype.some.called).to.equal(false);
-      if (shouldCheckForArraySort) {
-        expect(Array.prototype.sort.called).to.equal(false);
-      }
-    });
-  };
 }());
