@@ -222,17 +222,26 @@
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
-    if (collection.length == 0) { return true; }
+    if (collection.length === 0) { return true; }
     var cumulative;
     return _.reduce(collection, function(memo, item) {
-      var result = (iterator === undefined) ? item == true : iterator(item) && true || iterator(item) == true;
-      return cumulative = (cumulative === undefined)? result : cumulative && result == true;
+      var result = (iterator === undefined) ? item === true : iterator(item) && true || iterator(item) === true;
+      return cumulative = (cumulative === undefined) ? result : cumulative && result === true;
     }, false);
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.some = function(collection, iterator) {
+    iterator = (iterator === undefined) ? function iterator(value) { return value; } : iterator;
+    return !_.every(collection, function(value) {return !iterator(value)}, false);
+    /*
+    Logic behind using every --
+      Similar to circuit / logic gates, you can construct an 'OR' operation via a series of NAND operations
+      _.every is essentially a complicated version of 'AND' operation, therefore use the js 'NOT'/inversion to switch from 'if and only if all values are true' to be 'if not all values are true'.
+      to make this work, we take the inverse test for truthyness for each item in the collecting, and then, using _.every, invert that output.
+      so, if and only if no items return true should some return false (all return false, inverts to true for all, _.every sees that all values are true and inversion of that truth value results in negative condition)
+    */
     // TIP: There's a very clever way to re-use every() here.
   };
 
