@@ -234,7 +234,7 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     iterator = (iterator === undefined) ? function iterator(value) { return value; } : iterator;
-    return !_.every(collection, function(value) {return !iterator(value)}, false);
+    return !_.every(collection, function(value) { return !iterator(value); }, false);
     /*
     Logic behind using every --
       Similar to circuit / logic gates, you can construct an 'OR' operation via a series of NAND operations
@@ -264,7 +264,14 @@
   //   }, {
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
-  _.extend = function(obj) {
+  _.extend = function() {
+    var obj = arguments[0] || {};
+    for (var i = 0; i < arguments.length; i++) {
+      _.each(arguments[i], function(value, key, object) {
+        obj[key] = value;
+      });
+    }
+    return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
