@@ -222,7 +222,12 @@
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
-    // TIP: Try re-using reduce() here.
+    if (collection.length == 0) { return true; }
+    var cumulative;
+    return _.reduce(collection, function(memo, item) {
+      var result = (iterator === undefined) ? item == true : iterator(item) && true || iterator(item) == true;
+      return cumulative = (cumulative === undefined)? result : cumulative && result == true;
+    }, false);
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
